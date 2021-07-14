@@ -135,7 +135,7 @@ $color-black-contrast-text: #000;
 }
 
 .counts {
-    width: calc(#{$cell-size} * 7);
+    width: calc(#{$cell-size} * 11);
     display: flex;
     justify-content: space-between;
 }

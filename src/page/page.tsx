@@ -3,7 +3,7 @@ import React from 'react';
 import { SquareNumber } from '../components';
 import { ThemeContext, MoodContext } from '../context';
 
-const MAXIMUM_NUMBER = 100;
+const MAXIMUM_NUMBER = 1000;
 
 class ErrorBoundary extends React.Component {
     state = {
@@ -96,7 +96,7 @@ class Page extends React.PureComponent<{}, PageState> {
         window.addEventListener('resize', this.handleWindowResize);
 
         this.setState({ isFetching: true });
-        fetch('https://www.random.org/integers/?num=1&min=1&max=99&col=11&base=10&format=plain&rnd=new')
+        fetch('https://www.random.org/integers/?num=1&min=0&max=999&col=11&base=10&format=plain&rnd=new')
         .then(response => response.json())
         .then(number => {
             this.setState({
@@ -129,7 +129,10 @@ class Page extends React.PureComponent<{}, PageState> {
                             <ErrorBoundary>
                                 <div className="counts">
                                     <div className="count">
-                                        <SquareNumber number={Math.floor(count / 10)} />
+                                        <SquareNumber number={Math.floor(count / 100)} />
+                                    </div>
+                                    <div className="count">
+                                        <SquareNumber number={Math.floor(count / 10) % 10} />
                                     </div>
                                     <div className="count">
                                         <SquareNumber number={count % 10} />
